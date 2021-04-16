@@ -1,0 +1,34 @@
+﻿@model List<KoronaBilgi>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Dünya Genelinde Korona</h1>
+<a class="btn btn-warning mb-3" asp-action="Doldur" asp-controller="Home">Listeyi Doldur</a>
+<table id="tblKorona" class="table">
+    <thead>
+        <tr>
+            <th>Ülke Adı</th>
+            <th>Vaka Sayısı</th>
+            <th>Ölüm Sayısı</th>
+            <th>Nüfus</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ulke.Ad</td>
+                <td>@item.VakaSayisi</td>
+                <td>@item.OlumSayisi</td>
+                <td>@item.Ulke.Nufus</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{ 
+<script>
+    $('#tblKorona').dataTable();
+      </script>
+}

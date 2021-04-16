@@ -1,0 +1,30 @@
+﻿@model List<KoronaBilgi>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ülke Adı</th>
+                <th>Vaka Sayısı</th>
+                <th>Ölüm Sayısı</th>
+                <th>Nüfus</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Ulke.Ad</td>
+                <td>@item.VakaSayisi</td>
+                <td>@item.OlumSayisi</td>
+                <td>@item.Ulke.Nufus</td>
+                <td>
+                    <a class="btn btn-warning" asp-action="Duzenle" asp-controller="KoronaBilgileri" 
+                       asp-route-id="@item.Id">Düzenle</a>
+                    <a class="btn btn-danger" asp-action="Sil" asp-controller="KoronaBilgileri"
+                       asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

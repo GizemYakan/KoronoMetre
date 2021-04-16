@@ -1,0 +1,22 @@
+﻿@model KoronaBilgi
+
+<form method="post" asp-action="Duzenle" asp-controller="KoronaBilgileri">
+    <input type="hidden" asp-for="Id" />
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="UlkeId">Ülke Adı</label>
+        <select class="form-control" asp-for="UlkeId" asp-items="ViewBag.Ulkeler"></select>
+        <span asp-validation-for="UlkeId"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="VakaSayisi">Vaka Sayısı</label>
+        <input class="form-control" type="number" asp-for="VakaSayisi" />
+        <span asp-validation-for="VakaSayisi"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="OlumSayisi">Ölüm Sayısı</label>
+        <input class="form-control" type="number" asp-for="OlumSayisi" />
+        <span asp-validation-for="OlumSayisi"></span>
+    </div>
+    <button class="btn btn-success">Kaydet</button>
+</form>

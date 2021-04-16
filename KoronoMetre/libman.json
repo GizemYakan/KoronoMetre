@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "datatables.net-bs4@1.10.24",
+      "destination": "wwwroot/datatables.net-bs4/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net@1.10.24",
+      "destination": "wwwroot/datatables.net/"
+    }
+  ]
+}

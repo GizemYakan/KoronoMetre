@@ -1,0 +1,8 @@
+﻿@model KoronaBilgi
+
+    <form asp-action="Sil" asp-controller="KoronaBilgileri">
+        <input type="hidden" asp-for="Id"/>
+        <p>@Model.Ulke.Ad 'ın korona bilgisini silmek istediğinize emin misiniz?</p>
+        <button class=" btn btn-success">Onayla</button>
+    </form>
+    <a asp-action="Index" asp-controller="KoronaBilgileri" class="btn btn-danger">İptal</a>

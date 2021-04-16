@@ -1,0 +1,59 @@
+﻿@model DashboardVM
+@{
+    ViewData["Title"] = "Index";
+    ViewBag.SayfaBaslik = "Dashboard";
+}
+
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Dünya Genelinde Korona İstatistikleri</h6>
+    </div>
+    <div class="card-body">
+        <div class="chart-bar">
+            <canvas id="myBarChart"></canvas>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/admin/vendor/chart.js/Chart.min.js"></script>
+    <script>
+        // https://www.chartjs.org/docs/latest/samples/bar/vertical.html
+        var ctx = document.getElementById("myBarChart").getContext("2d");
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Model.UlkelerJson),
+                datasets: [{
+                    label: '# of Cases',
+                    data: @Html.Raw(Model.VakaSayilariJson),
+                    backgroundColor: '#2a9df4',
+                    borderColor: '#1167b1',
+                    borderWidth: 1
+                },
+                    {
+                        label: '# of Deaths',
+                        data: @Html.Raw(Model.OlumSayilariJson),
+                        backgroundColor: 'red',
+                        borderColor: 'red',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                maintainAspectRatio: false
+            }
+        });
+
+    </script>
+}
